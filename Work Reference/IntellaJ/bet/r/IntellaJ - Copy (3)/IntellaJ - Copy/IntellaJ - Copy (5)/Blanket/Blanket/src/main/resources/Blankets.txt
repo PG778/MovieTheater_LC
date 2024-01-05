@@ -1,0 +1,96 @@
+Size: Twin -- Material: Cotton -- Color: White -- Price: 30.0
+Size: Twin -- Material: Cotton -- Color: White -- Price: 35.75 Heat Setting: 1 Shutoff Feature: true
+Size: Twin -- Material: Cotton -- Color: Tan -- Price: 30.0
+Size: Twin -- Material: Cotton -- Color: Tan -- Price: 35.75 Heat Setting: 1 Shutoff Feature: true
+Size: Twin -- Material: Cotton -- Color: Green -- Price: 30.0
+Size: Twin -- Material: Cotton -- Color: Green -- Price: 35.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: Twin -- Material: Wool -- Color: White -- Price: 55.0
+Size: Twin -- Material: Wool -- Color: White -- Price: 60.75 Heat Setting: 1 Shutoff Feature: true
+Size: Twin -- Material: Wool -- Color: Tan -- Price: 55.0
+Size: Twin -- Material: Wool -- Color: Tan -- Price: 60.75 Heat Setting: 1 Shutoff Feature: true
+Size: Twin -- Material: Wool -- Color: Green -- Price: 55.0
+Size: Twin -- Material: Wool -- Color: Green -- Price: 60.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: Twin -- Material: Cashmere -- Color: White -- Price: 70.0
+Size: Twin -- Material: Cashmere -- Color: White -- Price: 75.75 Heat Setting: 1 Shutoff Feature: true
+Size: Twin -- Material: Cashmere -- Color: Tan -- Price: 70.0
+Size: Twin -- Material: Cashmere -- Color: Tan -- Price: 75.75 Heat Setting: 1 Shutoff Feature: true
+Size: Twin -- Material: Cashmere -- Color: Green -- Price: 70.0
+Size: Twin -- Material: Cashmere -- Color: Green -- Price: 75.75 Heat Setting: 1 Shutoff Feature: true
+
+
+
+
+Size: Double -- Material: Cotton -- Color: White -- Price: 40.0
+Size: Double -- Material: Cotton -- Color: White -- Price: 45.75 Heat Setting: 1 Shutoff Feature: true
+Size: Double -- Material: Cotton -- Color: Tan -- Price: 40.0
+Size: Double -- Material: Cotton -- Color: Tan -- Price: 45.75 Heat Setting: 1 Shutoff Feature: true
+Size: Double -- Material: Cotton -- Color: Green -- Price: 40.0
+Size: Double -- Material: Cotton -- Color: Green -- Price: 45.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: Double -- Material: Wool -- Color: White -- Price: 65.0
+Size: Double -- Material: Wool -- Color: White -- Price: 70.75 Heat Setting: 1 Shutoff Feature: true
+Size: Double -- Material: Wool -- Color: Tan -- Price: 65.0
+Size: Double -- Material: Wool -- Color: Tan -- Price: 70.75 Heat Setting: 1 Shutoff Feature: true
+Size: Double -- Material: Wool -- Color: Green -- Price: 65.0
+Size: Double -- Material: Wool -- Color: Green -- Price: 70.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: Double -- Material: Cashmere -- Color: White -- Price: 80.0
+Size: Double -- Material: Cashmere -- Color: White -- Price: 85.75 Heat Setting: 1 Shutoff Feature: true
+Size: Double -- Material: Cashmere -- Color: Tan -- Price: 80.0
+Size: Double -- Material: Cashmere -- Color: Tan -- Price: 85.75 Heat Setting: 1 Shutoff Feature: true
+Size: Double -- Material: Cashmere -- Color: Green -- Price: 80.0
+Size: Double -- Material: Cashmere -- Color: Green -- Price: 85.75 Heat Setting: 1 Shutoff Feature: true
+
+
+
+
+Size: Queen -- Material: Cotton -- Color: White -- Price: 55.0
+Size: Queen -- Material: Cotton -- Color: White -- Price: 60.75 Heat Setting: 1 Shutoff Feature: true
+Size: Queen -- Material: Cotton -- Color: Tan -- Price: 55.0
+Size: Queen -- Material: Cotton -- Color: Tan -- Price: 60.75 Heat Setting: 1 Shutoff Feature: true
+Size: Queen -- Material: Cotton -- Color: Green -- Price: 55.0
+Size: Queen -- Material: Cotton -- Color: Green -- Price: 60.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: Queen -- Material: Wool -- Color: White -- Price: 80.0
+Size: Queen -- Material: Wool -- Color: White -- Price: 85.75 Heat Setting: 1 Shutoff Feature: true
+Size: Queen -- Material: Wool -- Color: Tan -- Price: 80.0
+Size: Queen -- Material: Wool -- Color: Tan -- Price: 85.75 Heat Setting: 1 Shutoff Feature: true
+Size: Queen -- Material: Wool -- Color: Green -- Price: 80.0
+Size: Queen -- Material: Wool -- Color: Green -- Price: 85.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: Queen -- Material: Cashmere -- Color: White -- Price: 95.0
+Size: Queen -- Material: Cashmere -- Color: White -- Price: 100.75 Heat Setting: 1 Shutoff Feature: true
+Size: Queen -- Material: Cashmere -- Color: Tan -- Price: 95.0
+Size: Queen -- Material: Cashmere -- Color: Tan -- Price: 100.75 Heat Setting: 1 Shutoff Feature: true
+Size: Queen -- Material: Cashmere -- Color: Green -- Price: 95.0
+Size: Queen -- Material: Cashmere -- Color: Green -- Price: 100.75 Heat Setting: 1 Shutoff Feature: true
+
+
+
+
+Size: King -- Material: Cotton -- Color: White -- Price: 70.0
+Size: King -- Material: Cotton -- Color: White -- Price: 75.75 Heat Setting: 1 Shutoff Feature: true
+Size: King -- Material: Cotton -- Color: Tan -- Price: 70.0
+Size: King -- Material: Cotton -- Color: Tan -- Price: 75.75 Heat Setting: 1 Shutoff Feature: true
+Size: King -- Material: Cotton -- Color: Green -- Price: 70.0
+Size: King -- Material: Cotton -- Color: Green -- Price: 75.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: King -- Material: Wool -- Color: White -- Price: 95.0
+Size: King -- Material: Wool -- Color: White -- Price: 100.75 Heat Setting: 1 Shutoff Feature: true
+Size: King -- Material: Wool -- Color: Tan -- Price: 95.0
+Size: King -- Material: Wool -- Color: Tan -- Price: 100.75 Heat Setting: 1 Shutoff Feature: true
+Size: King -- Material: Wool -- Color: Green -- Price: 95.0
+Size: King -- Material: Wool -- Color: Green -- Price: 100.75 Heat Setting: 1 Shutoff Feature: true
+
+Size: King -- Material: Cashmere -- Color: White -- Price: 110.0
+Size: King -- Material: Cashmere -- Color: White -- Price: 115.75 Heat Setting: 1 Shutoff Feature: true
+Size: King -- Material: Cashmere -- Color: Tan -- Price: 110.0
+Size: King -- Material: Cashmere -- Color: Tan -- Price: 115.75 Heat Setting: 1 Shutoff Feature: true
+Size: King -- Material: Cashmere -- Color: Green -- Price: 110.0
+Size: King -- Material: Cashmere -- Color: Green -- Price: 115.75 Heat Setting: 1 Shutoff Feature: true
+
+
+
+

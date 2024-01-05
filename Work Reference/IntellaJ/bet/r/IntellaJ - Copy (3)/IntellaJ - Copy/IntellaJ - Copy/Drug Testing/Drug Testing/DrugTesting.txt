@@ -1,0 +1,39 @@
+Week 1
+#13	Wk 0	1 times
+#29	Wk 0	1 times
+#26	Wk 0	1 times
+#5	Wk 0	1 times
+
+Week 2
+#6	Wk 0	1 times
+#28	Wk 0	1 times
+#1	Wk 0	1 times
+#17	Wk 0	1 times
+
+Week 3
+#25	Wk 0	1 times
+#18	Wk 0	1 times
+#22	Wk 0	1 times
+#4	Wk 0	1 times
+
+Week 4
+#8	Wk 0	1 times
+#27	Wk 0	1 times
+#19	Wk 0	1 times
+#7	Wk 0	1 times
+
+Week 5
+#3	Wk 0	1 times
+#15	Wk 0	1 times
+#23	Wk 0	1 times
+#16	Wk 0	1 times
+
+Week 6
+#9	Wk 0	1 times
+#11	Wk 0	1 times
+#21	Wk 0	1 times
+#30	Wk 0	1 times
+
+Week 7
+#10	Wk 0	1 times
+#2

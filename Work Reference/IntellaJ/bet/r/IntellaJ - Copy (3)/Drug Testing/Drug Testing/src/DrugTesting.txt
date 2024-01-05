@@ -1,0 +1,312 @@
+Week 1
+#17	Wk 0	1 times
+#24	- - - -	1 times
+#8	- - - -	1 times
+#28	- - - -	1 times
+
+Week 2
+#16	Wk 0	1 times
+#21	Wk 0	1 times
+#20	- - - -	1 times
+#14	- - - -	1 times
+
+Week 3
+#7	Wk 0	1 times
+#22	Wk 0	1 times
+#27	Wk 0	1 times
+#13	- - - -	1 times
+
+Week 4
+#23	Wk 0	1 times
+#18	Wk 0	1 times
+#12	Wk 0	1 times
+#19	Wk 0	1 times
+
+Week 5
+#19	Wk 0	2 times
+#30	Wk 0	1 times
+#8	Wk 0	2 times
+#15	Wk 0	1 times
+
+Week 6
+#17	Wk 0	2 times
+#7	Wk 0	2 times
+#17	Wk 0	3 times
+#13	Wk 0	2 times
+
+Week 7
+#18	Wk 0	2 times
+#6	Wk 0	1 times
+#21	Wk 0	2 times
+#5	Wk 0	1 times
+
+Week 8
+#22	Wk 0	2 times
+#7	Wk 0	3 times
+#30	Wk 0	2 times
+#5	Wk 0	2 times
+
+Week 9
+#24	Wk 0	2 times
+#9	Wk 0	1 times
+#24	Wk 0	3 times
+#26	Wk 0	1 times
+
+Week 10
+#23	Wk 0	2 times
+#11	Wk 0	1 times
+#29	Wk 0	1 times
+#24	Wk 0	4 times
+
+Week 11
+#24	Wk 0	5 times
+#5	Wk 0	3 times
+#13	Wk 0	3 times
+#4	Wk 0	1 times
+
+Week 12
+#20	Wk 0	2 times
+#18	Wk 0	3 times
+#18	Wk 0	4 times
+#8	Wk 0	3 times
+
+Week 13
+#19	Wk 0	3 times
+#4	Wk 0	2 times
+#17	Wk 0	4 times
+#11	Wk 0	2 times
+
+Week 14
+#6	Wk 0	2 times
+#25	Wk 0	1 times
+#16	Wk 0	2 times
+#5	Wk 0	4 times
+
+Week 15
+#21	Wk 0	3 times
+#7	Wk 0	4 times
+#7	Wk 0	5 times
+#15	Wk 0	2 times
+
+Week 16
+#23	Wk 0	3 times
+#14	Wk 0	2 times
+#16	Wk 0	3 times
+#28	Wk 0	2 times
+
+Week 17
+#12	Wk 0	2 times
+#14	Wk 0	3 times
+#24	Wk 0	6 times
+#22	Wk 0	3 times
+
+Week 18
+#11	Wk 0	3 times
+#10	Wk 0	1 times
+#28	Wk 0	3 times
+#25	Wk 0	2 times
+
+Week 19
+#2	Wk 0	1 times
+#10	Wk 0	2 times
+#12	Wk 0	3 times
+#1	Wk 0	1 times
+
+Week 20
+#6	Wk 0	3 times
+#29	Wk 0	2 times
+#24	Wk 0	7 times
+#16	Wk 0	4 times
+
+Week 21
+#29	Wk 0	3 times
+#30	Wk 0	3 times
+#14	Wk 0	4 times
+#15	Wk 0	3 times
+
+Week 22
+#27	Wk 0	2 times
+#14	Wk 0	5 times
+#20	Wk 0	3 times
+#2	Wk 0	2 times
+
+Week 23
+#11	Wk 0	4 times
+#7	Wk 0	6 times
+#20	Wk 0	4 times
+#7	Wk 0	7 times
+
+Week 24
+#23	Wk 0	4 times
+#27	Wk 0	3 times
+#25	Wk 0	3 times
+#7	Wk 0	8 times
+
+Week 25
+#20	Wk 0	5 times
+#4	Wk 0	3 times
+#5	Wk 0	5 times
+#1	Wk 0	2 times
+
+Week 26
+#4	Wk 0	4 times
+#29	Wk 0	4 times
+#11	Wk 0	5 times
+#28	Wk 0	4 times
+
+Week 27
+#19	Wk 0	4 times
+#2	Wk 0	3 times
+#30	Wk 0	4 times
+#16	Wk 0	5 times
+
+Week 28
+#5	Wk 0	6 times
+#21	Wk 0	4 times
+#3	Wk 0	1 times
+#2	Wk 0	4 times
+
+Week 29
+#10	Wk 0	3 times
+#24	Wk 0	8 times
+#15	Wk 0	4 times
+#8	Wk 0	4 times
+
+Week 30
+#19	Wk 0	5 times
+#17	Wk 0	5 times
+#11	Wk 0	6 times
+#13	Wk 0	4 times
+
+Week 31
+#13	Wk 0	5 times
+#22	Wk 0	4 times
+#23	Wk 0	5 times
+#24	Wk 0	9 times
+
+Week 32
+#13	Wk 0	6 times
+#19	Wk 0	6 times
+#21	Wk 0	5 times
+#6	Wk 0	4 times
+
+Week 33
+#10	Wk 0	4 times
+#4	Wk 0	5 times
+#16	Wk 0	6 times
+#13	Wk 0	7 times
+
+Week 34
+#25	Wk 0	4 times
+#27	Wk 0	4 times
+#25	Wk 0	5 times
+#14	Wk 0	6 times
+
+Week 35
+#21	Wk 0	6 times
+#13	Wk 0	8 times
+#22	Wk 0	5 times
+#9	Wk 0	2 times
+
+Week 36
+#4	Wk 0	6 times
+#23	Wk 0	6 times
+#25	Wk 0	6 times
+#3	Wk 0	2 times
+
+Week 37
+#23	Wk 0	7 times
+#27	Wk 0	5 times
+#29	Wk 0	5 times
+#20	Wk 0	6 times
+
+Week 38
+#5	Wk 0	7 times
+#22	Wk 0	6 times
+#25	Wk 0	7 times
+#17	Wk 0	6 times
+
+Week 39
+#2	Wk 0	5 times
+#15	Wk 0	5 times
+#13	Wk 0	9 times
+#13	Wk 0	10 times
+
+Week 40
+#11	Wk 0	7 times
+#27	Wk 0	6 times
+#17	Wk 0	7 times
+#14	Wk 0	7 times
+
+Week 41
+#22	Wk 0	7 times
+#7	Wk 0	9 times
+#26	Wk 0	2 times
+#19	Wk 0	7 times
+
+Week 42
+#15	Wk 0	6 times
+#14	Wk 0	8 times
+#8	Wk 0	5 times
+#1	Wk 0	3 times
+
+Week 43
+#14	Wk 0	9 times
+#16	Wk 0	7 times
+#30	Wk 0	5 times
+#15	Wk 0	7 times
+
+Week 44
+#13	Wk 0	11 times
+#1	Wk 0	4 times
+#13	Wk 0	12 times
+#11	Wk 0	8 times
+
+Week 45
+#28	Wk 0	5 times
+#4	Wk 0	7 times
+#22	Wk 0	8 times
+#24	Wk 0	10 times
+
+Week 46
+#21	Wk 0	7 times
+#5	Wk 0	8 times
+#20	Wk 0	7 times
+#15	Wk 0	8 times
+
+Week 47
+#16	Wk 0	8 times
+#29	Wk 0	6 times
+#15	Wk 0	9 times
+#26	Wk 0	3 times
+
+Week 48
+#23	Wk 0	8 times
+#5	Wk 0	9 times
+#5	Wk 0	10 times
+#4	Wk 0	8 times
+
+Week 49
+#2	Wk 0	6 times
+#21	Wk 0	8 times
+#2	Wk 0	7 times
+#24	Wk 0	11 times
+
+Week 50
+#12	Wk 0	4 times
+#26	Wk 0	4 times
+#12	Wk 0	5 times
+#27	Wk 0	7 times
+
+Week 51
+#10	Wk 0	5 times
+#26	Wk 0	5 times
+#27	Wk 0	8 times
+#15	Wk 0	10 times
+
+Week 52
+#18	Wk 0	5 times
+#25	Wk 0	8 times
+#15	Wk 0	11 times
+#11	Wk 0	9 times
+
