@@ -122,7 +122,7 @@ public class AddMovieController {
                 movie.setGenre(rs.getString("genre"));
                 movie.setDuration(String.valueOf(rs.getInt("duration")));
                 movie.setReleaseDate(String.valueOf(rs.getDate("release_date")));
-
+                movie.setImagePath(rs.getString("image"));
                 movieList.add(movie);
             }
         } catch (SQLException e) {
@@ -140,17 +140,8 @@ public class AddMovieController {
         setMovieDetails(title, genre, duration, releaseDate, image, movie);
         System.out.println("Image path: " + movie.getImagePath());
 
-        if (image != null) {
-            File file = new File(image);
-            if(file.exists() && file.isFile()) {
-                Image img = new Image(file.toURI().toString());
-                ImageView.setImage(img);
-            } else {
-                ImageView.setImage(null);
-            }
-        } else {
-            ImageView.setImage(null);
-        }
+        ImageView.setImage(new Image(movie.getImagePath()));
+
     }
     private void setMovieDetails(String title, String genre, String duration, LocalDate releaseDate, String image, Movies movie) {
         lbl_title.setText(title);
@@ -288,13 +279,12 @@ public class AddMovieController {
             return;
         }
     }
-    @FXML
+
     public void handleInsertButtonAction() {
         String title = lbl_title.getText();
         String genre = lbl_genre.getText();
         String duration = lbl_Duration.getText();
         LocalDate releaseDate = PublishDate.getValue();
-
 
         // Validate if duration is a numeric string
         if (!duration.matches("\\d+")) {
@@ -303,13 +293,14 @@ public class AddMovieController {
         }
 
         Movies movie = new Movies(0, title, genre, releaseDate.toString(), duration, null);
+        movie.setImagePath(ImageView.getImage().getUrl()); // set image path to movie object
 
         try (Connection conn = DBUtils.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO movies (title, genre, duration, release_date, image) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, movie.getTitle());
             stmt.setString(2, movie.getGenre());
             stmt.setInt(3, Integer.parseInt(movie.getDuration()));
-            stmt.setString(5, movie.getImagePath());
+            stmt.setString(5, movie.getImagePath()); // store image path in database
             stmt.setDate(4, Date.valueOf(movie.getReleaseDate()));
             stmt.executeUpdate();
         } catch (SQLException e) {
