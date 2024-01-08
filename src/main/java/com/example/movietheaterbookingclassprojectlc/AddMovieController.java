@@ -179,12 +179,13 @@ public class AddMovieController {
     @FXML
     private void handleUpdateMovie() {
         try (Connection conn = DBUtils.getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE movies SET title = ?, genre = ?, duration = ?, release_date = ?  WHERE id = ?;");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE movies SET title = ?, genre = ?, duration = ?, release_date = ?, image = ? WHERE id = ?;");
             stmt.setString(1, lbl_title.getText());
             stmt.setString(2, lbl_genre.getText());
             stmt.setInt(3, Integer.parseInt(lbl_Duration.getText()));
             stmt.setDate(4, Date.valueOf(PublishDate.getValue()));
-            stmt.setInt(5, MovieTable.getSelectionModel().getSelectedItem().getId());
+            stmt.setString(5, MovieTable.getSelectionModel().getSelectedItem().getImagePath()); // update image path in database
+            stmt.setInt(6, MovieTable.getSelectionModel().getSelectedItem().getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
