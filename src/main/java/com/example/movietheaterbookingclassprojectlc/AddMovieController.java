@@ -1,16 +1,25 @@
 package com.example.movietheaterbookingclassprojectlc;
 
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.*;
+import java.time.LocalDate;
 
 import static com.example.movietheaterbookingclassprojectlc.DBUtils.changeScene;
 
 public class AddMovieController {
+
+    @FXML
+    private TextField movieSearchTextField;
 
     @FXML
     private Button AddMovieButton;
@@ -22,7 +31,34 @@ public class AddMovieController {
     private Button DashBoardButton;
 
     @FXML
+    private TableColumn<Movies, String> DurationColumn;
+
+    @FXML
     private Button EditScreeningButton;
+
+    @FXML
+    private TableColumn<Movies, String> GenreColumn;
+
+    @FXML
+    private ImageView ImageView;
+
+    @FXML
+    private TableView<Movies> MovieTable;
+
+    @FXML
+    private Button btn_Delete;  // to implement delete feature
+
+    @FXML
+    private Button btn_Update;  // to implement update feature
+
+    @FXML
+    private TableColumn<Movies, String> MovieTitleColumn;
+
+    @FXML
+    private DatePicker PublishDate;
+
+    @FXML
+    private TableColumn<Movies, String> PublishedDateColumn;
 
     @FXML
     private Button SignOutButton;
@@ -33,23 +69,144 @@ public class AddMovieController {
     @FXML
     private Button availableMoviesButton;
 
+    @FXML
+    private Button btn_Import;
+
+    @FXML
+    private Button btn_Insert;
+
+    @FXML
+    private TextField lbl_Duration;
+
+    @FXML
+    private TextField lbl_genre;
+
+    @FXML
+    private TextField lbl_title;
+
+    private ObservableList<Movies> movieList;
 
     @FXML
     public void initialize()  {
+
+
         UsernameLBL.setText(DBUtils.user.getUsername());
-        DashBoardButton.setOnAction(this::handleDashBoardButtonAction);
-        AddMovieButton.setOnAction(this::handleAddMovieButtonAction);
-        CustomersButton.setOnAction(this::handleCustomersButtonAction);
-        EditScreeningButton.setOnAction(this::handleEditScreeningButtonAction);
-        SignOutButton.setOnAction(this::handleSignOutButtonAction);
-        availableMoviesButton.setOnAction(this::handleAvailableMoviesButtonAction);
+
+        movieList = FXCollections.observableArrayList();
+        MovieTable.setItems(movieList);
+        MovieTitleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+        GenreColumn.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+        DurationColumn.setCellValueFactory(cellData -> cellData.getValue().durationProperty().asString());
+        PublishedDateColumn.setCellValueFactory(cellData -> cellData.getValue().releaseDateProperty());
+
+        MovieTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showMovieDetails(newValue));
+
+        loadMoviesFromDatabase();
+
 
     }
 
-    private void handleAvailableMoviesButtonAction(ActionEvent actionEvent){
+
+
+
+    private void loadMoviesFromDatabase() {
+        int id = 0;
+        movieList.clear();
+        try (Connection conn = DBUtils.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM movies");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String publishDate = (PublishDate.getValue() == null) ? "" : PublishDate.getValue().toString();
+                Movies movie = new Movies(rs.getInt("id"), rs.getString("title"), rs.getString("genre"), rs.getString("release_date"), String.valueOf(rs.getInt("duration")), rs.getString("image"));
+                movie.setTitle(rs.getString("title"));
+                movie.setGenre(rs.getString("genre"));
+                movie.setDuration(String.valueOf(rs.getInt("duration")));
+                movie.setReleaseDate(String.valueOf(rs.getDate("release_date")));
+
+                movieList.add(movie);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showMovieDetails(Movies movie) {
+        String title = movie != null ? movie.getTitle() : "";
+        String genre = movie != null ? movie.getGenre() : "";
+        String duration = movie != null ? String.valueOf(movie.getDuration()) : "";
+        LocalDate releaseDate = movie != null ? LocalDate.parse(movie.getReleaseDate()) : null;
+        String image = movie != null ? movie.getImagePath() : null;
+
+        setMovieDetails(title, genre, duration, releaseDate, image, movie);
+        System.out.println("Image path: " + movie.getImagePath());
+
+        if (image != null) {
+            File file = new File(image);
+            if(file.exists() && file.isFile()) {
+                Image img = new Image(file.toURI().toString());
+                ImageView.setImage(img);
+            } else {
+                ImageView.setImage(null);
+            }
+        } else {
+            ImageView.setImage(null);
+        }
+    }
+    private void setMovieDetails(String title, String genre, String duration, LocalDate releaseDate, String image, Movies movie) {
+        lbl_title.setText(title);
+        lbl_genre.setText(genre);
+        lbl_Duration.setText(duration);
+        PublishDate.setValue(releaseDate);
+
+        String imagePath = image != null ? movie.getImagePath() : null;
+
+        if (image != null) {
+            File file = new File(image);
+            Image img = new Image(file.toURI().toString());
+            ImageView.setImage(img);
+        } else {
+            ImageView.setImage(null);
+        }
+    }
+
+
+
+
+
+    @FXML
+    private void handleDeleteMovie() {
+        try (Connection conn = DBUtils.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM movies WHERE id = ?;");
+            stmt.setInt(1, MovieTable.getSelectionModel().getSelectedItem().getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        loadMoviesFromDatabase();
+    }
+
+    @FXML
+    private void handleUpdateMovie() {
+        try (Connection conn = DBUtils.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("UPDATE movies SET title = ?, genre = ?, duration = ?, release_date = ?  WHERE id = ?;");
+            stmt.setString(1, lbl_title.getText());
+            stmt.setString(2, lbl_genre.getText());
+            stmt.setInt(3, Integer.parseInt(lbl_Duration.getText()));
+            stmt.setDate(4, Date.valueOf(PublishDate.getValue()));
+            stmt.setInt(5, MovieTable.getSelectionModel().getSelectedItem().getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        loadMoviesFromDatabase();
+    }
+
+
+
+    public void handleAvailableMoviesButtonAction(){
         try{
             changeScene("AvailableMovies.fxml", "Available Movies");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,49 +214,49 @@ public class AddMovieController {
 
     }
 
-    private void handleDashBoardButtonAction(ActionEvent actionEvent){
+    public void handleDashBoardButtonAction(){
         try {
             changeScene("Homepage.fxml", "Homepage");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void handleSignOutButtonAction(ActionEvent actionEvent){
+    public void handleSignOutButtonAction(){
         try {
             changeScene("Login.fxml", "Login");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void handleEditScreeningButtonAction(ActionEvent actionEvent){
+    public void handleEditScreeningButtonAction(){
         try {
             changeScene("EditScreening.fxml", "Edit Screening");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void handleCustomersButtonAction(ActionEvent actionEvent) {
+    public void handleCustomersButtonAction() {
         try {
             changeScene("Customers.fxml", "Customers");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void handleAddMovieButtonAction(ActionEvent actionEvent) {
+    public void handleAddMovieButtonAction() {
         try {
             changeScene("AddMovie.fxml", "Add Movie");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,9 +264,59 @@ public class AddMovieController {
 
 
     @FXML
-    private void CloseAction(ActionEvent event) {
-        Button button = (Button) event.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
+    public void CloseAction() {
+        Stage stage = (Stage) SignOutButton.getScene().getWindow();
+
         stage.close();
     }
+
+    public void handleImportButtonAction() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        Movies movie = MovieTable.getSelectionModel().getSelectedItem();
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            ImageView.setImage(image);
+            movie.setImagePath(selectedFile.getAbsolutePath());
+        } else {
+            return;
+        }
+    }
+    @FXML
+    public void handleInsertButtonAction() {
+        String title = lbl_title.getText();
+        String genre = lbl_genre.getText();
+        String duration = lbl_Duration.getText();
+        LocalDate releaseDate = PublishDate.getValue();
+
+
+        // Validate if duration is a numeric string
+        if (!duration.matches("\\d+")) {
+            System.out.println("Invalid duration. Please enter a numeric value.");
+            return;
+        }
+
+        Movies movie = new Movies(0, title, genre, releaseDate.toString(), duration, null);
+
+        try (Connection conn = DBUtils.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO movies (title, genre, duration, release_date, image) VALUES (?, ?, ?, ?, ?)");
+            stmt.setString(1, movie.getTitle());
+            stmt.setString(2, movie.getGenre());
+            stmt.setInt(3, Integer.parseInt(movie.getDuration()));
+            stmt.setString(5, movie.getImagePath());
+            stmt.setDate(4, Date.valueOf(movie.getReleaseDate()));
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        loadMoviesFromDatabase();
+    }
+
 }

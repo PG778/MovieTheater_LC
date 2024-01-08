@@ -1,3 +1,0 @@
-Lucas - I did the Electric blanket class, and also started off the main with all of the starter code in it.
-
-Trevor - I did the Blanket class and file handling, but also helped refactor main to make it work seemlesley
