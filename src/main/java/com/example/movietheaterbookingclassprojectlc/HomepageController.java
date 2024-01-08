@@ -1,6 +1,5 @@
 package com.example.movietheaterbookingclassprojectlc;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,20 +35,13 @@ public class HomepageController {
 
     @FXML
     public void initialize()  {
-        UsernameLBL.setText(DBUtils.user.getUsername());
-        DashBoardButton.setOnAction(this::handleDashBoardButtonAction);
-        AddMovieButton.setOnAction(this::handleAddMovieButtonAction);
-        CustomersButton.setOnAction(this::handleCustomersButtonAction);
-        EditScreeningButton.setOnAction(this::handleEditScreeningButtonAction);
-        SignOutButton.setOnAction(this::handleSignOutButtonAction);
-        availableMoviesButton.setOnAction(this::handleAvailableMoviesButtonAction);
+
 
     }
-
-    private void handleAvailableMoviesButtonAction(ActionEvent actionEvent){
+    public void handleAvailableMoviesButtonAction(){
         try{
             changeScene("AvailableMovies.fxml", "Available Movies");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,60 +49,61 @@ public class HomepageController {
 
     }
 
-    private void handleDashBoardButtonAction(ActionEvent actionEvent){
+    public void handleDashBoardButtonAction(){
         try {
             changeScene("Homepage.fxml", "Homepage");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void handleSignOutButtonAction(ActionEvent actionEvent){
+    public void handleSignOutButtonAction(){
         try {
             changeScene("Login.fxml", "Login");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void handleEditScreeningButtonAction(ActionEvent actionEvent){
+    public void handleEditScreeningButtonAction(){
         try {
             changeScene("EditScreening.fxml", "Edit Screening");
-            CloseAction(actionEvent);
+            CloseAction();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void handleCustomersButtonAction(ActionEvent actionEvent) {
-          try {
-                changeScene("Customers.fxml", "Customers");
-              CloseAction(actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public void handleCustomersButtonAction() {
+        try {
+            changeScene("Customers.fxml", "Customers");
+            CloseAction();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void handleAddMovieButtonAction(ActionEvent actionEvent) {
-            try {
-                changeScene("AddMovie.fxml", "Add Movie");
-                CloseAction(actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public void handleAddMovieButtonAction() {
+        try {
+            changeScene("AddMovie.fxml", "Add Movie");
+            CloseAction();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @FXML
-    private void CloseAction(ActionEvent event) {
-        Button button = (Button) event.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
+    public void CloseAction() {
+        Stage stage = (Stage) SignOutButton.getScene().getWindow();
+
         stage.close();
     }
+
 
 }
