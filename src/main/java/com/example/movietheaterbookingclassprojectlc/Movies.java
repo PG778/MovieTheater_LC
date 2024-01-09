@@ -1,15 +1,14 @@
 package com.example.movietheaterbookingclassprojectlc;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 
 public class Movies{
     private int id;
-    private SimpleStringProperty title;
-    private SimpleStringProperty genre;
-    private SimpleStringProperty releaseDate;
-    private SimpleStringProperty duration;
+    private final SimpleStringProperty title;
+    private final SimpleStringProperty genre;
+    private final SimpleStringProperty releaseDate;
+    private final SimpleStringProperty duration;
     private String imagePath;
 
     public Movies(int id, String title, String genre, String releaseDate, String duration, String imagePath) {
@@ -68,12 +67,12 @@ public class Movies{
     public ObservableValue<String> genreProperty() {
         return genre;
     }
-    public StringProperty releaseDateProperty() {
+    public SimpleStringProperty releaseDateProperty() {
         return releaseDate;
     }
 
     // Property methods
-    public StringProperty durationProperty() {
+    public ObservableValue<String> durationProperty() {
         return duration;
     }
 }
