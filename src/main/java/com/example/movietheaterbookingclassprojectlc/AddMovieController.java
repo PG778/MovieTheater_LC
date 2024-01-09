@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -90,7 +91,9 @@ public class AddMovieController {
     public void initialize()  {
         UsernameLBL.setText(DBUtils.user.getUsername());
 
-        movieList = FXCollections.observableArrayList();
+
+
+
         ColumnFill();
         loadMoviesFromDatabase();
 
@@ -99,10 +102,15 @@ public class AddMovieController {
 
 
     public void ColumnFill() {
+        movieList = FXCollections.observableArrayList();
         MovieTitleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         GenreColumn.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+        // For duration
         DurationColumn.setCellValueFactory(cellData -> cellData.getValue().durationProperty());
+
+        // For published date
         PublishedDateColumn.setCellValueFactory(cellData -> cellData.getValue().releaseDateProperty());
+        MovieTable.refresh();
     }
 
 
@@ -116,8 +124,8 @@ public class AddMovieController {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("genre"),
-                        rs.getString("release_date").trim(),
-                        rs.getString("duration").trim(),
+                        rs.getString("release_date"),
+                        rs.getString("duration"),
                         rs.getString("image"));
 
                 System.out.println("Duration: " + rs.getString("duration")); // Check if this prints correctly
@@ -152,6 +160,8 @@ public class AddMovieController {
         MovieTable.refresh();
 
     }
+
+
     private void setMovieDetails(String title, String genre, String duration, LocalDate releaseDate, String image) {
         Movies movie = new Movies(0, title, genre, releaseDate.toString(), duration, image);
         lbl_title.setText(title);
