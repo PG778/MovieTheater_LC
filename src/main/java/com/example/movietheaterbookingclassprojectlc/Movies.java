@@ -1,83 +1,79 @@
 package com.example.movietheaterbookingclassprojectlc;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 
-public class Movies {
+public class Movies{
     private int id;
-    private String title;
-    private String genre;
-
-    private String releaseDate;
-    private String duration;
+    private SimpleStringProperty title;
+    private SimpleStringProperty genre;
+    private SimpleStringProperty releaseDate;
+    private SimpleStringProperty duration;
     private String imagePath;
 
-    public Movies(int id, String title, String genre,
-                   String releaseDate, String duration,
-                  String imagePath) {
+    public Movies(int id, String title, String genre, String releaseDate, String duration, String imagePath) {
         this.id = id;
-        this.title = title;
-        this.genre = genre;
-        this.releaseDate = releaseDate;
-        this.duration = duration;
+        this.title = new SimpleStringProperty(title);
+        this.genre = new SimpleStringProperty(genre);
+        this.releaseDate = new SimpleStringProperty(releaseDate);
+        this.duration = new SimpleStringProperty(duration);
         this.imagePath = imagePath;
     }
 
-    public ObservableValue<String> genreProperty() {
-        return new SimpleStringProperty(genre);
+    // Getters
+    public int getId(){
+        return id;
     }
-
-    public ObservableValue<String> durationProperty() {
-        return new SimpleStringProperty(duration);
+    public String getTitle(){
+        return title.get();
     }
-
-    public ObservableValue<String> releaseDateProperty() {
-        return new SimpleStringProperty(releaseDate);
+    public String getGenre(){
+        return genre.get();
     }
-
+    public String getReleaseDate(){
+        return releaseDate.get();
+    }
+    public String getDuration(){
+        return duration.get();
+    }
     public String getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String image) {
-        this.imagePath = image;
-    }
-
-    public int getId(){
-        return id;
-    }
-
-    public String getTitle(){
-        return title;
-    }
-    public String getGenre(){
-        return genre;
-    }
-    public String getReleaseDate(){
-        return releaseDate;
-    }
-    public String getDuration(){
-        return duration;
-    }
+    // Setters
     public void setId(int id){
         this.id = id;
     }
     public void setTitle(String title){
-        this.title = title;
+        this.title.set(title);
     }
     public void setGenre(String genre){
-        this.genre = genre;
+        this.genre.set(genre);
     }
     public void setReleaseDate(String releaseDate){
-        this.releaseDate = releaseDate;
+        this.releaseDate.set(releaseDate);
     }
     public void setDuration(String duration){
-        this.duration = duration;
+        this.duration.set(duration);
+    }
+    public void setImagePath(String image) {
+        this.imagePath = image;
     }
 
-
+    // Property methods
     public ObservableValue<String> titleProperty() {
-        return new SimpleStringProperty(title);
+        return title;
+    }
+    public ObservableValue<String> genreProperty() {
+        return genre;
+    }
+    public StringProperty releaseDateProperty() {
+        return releaseDate;
     }
 
+    // Property methods
+    public StringProperty durationProperty() {
+        return duration;
+    }
 }

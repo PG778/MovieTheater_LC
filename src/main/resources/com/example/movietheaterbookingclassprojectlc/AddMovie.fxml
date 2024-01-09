@@ -52,8 +52,8 @@
                     <columns>
                       <TableColumn fx:id="MovieTitleColumn" prefWidth="119.19994735717773" text="Movie Title" />
                       <TableColumn fx:id="GenreColumn" prefWidth="91.20001220703125" text="Genre" />
-                        <TableColumn fx:id="DurationColumn" prefWidth="75.0" text="Duration" />
-                        <TableColumn fx:id="PublishedDateColumn" prefWidth="188.7999267578125" text="Published Date" />
+                        <TableColumn fx:id="DurationColumn" prefWidth="97.60011291503906" text="Duration" />
+                        <TableColumn fx:id="PublishedDateColumn" prefWidth="166.39990234375" text="Published Date" />
                     </columns>
                   </TableView>
                </children>

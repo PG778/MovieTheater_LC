@@ -88,83 +88,59 @@ public class AddMovieController {
 
     @FXML
     public void initialize()  {
-
-
         UsernameLBL.setText(DBUtils.user.getUsername());
 
         movieList = FXCollections.observableArrayList();
-
-
         ColumnFill();
         loadMoviesFromDatabase();
 
         MovieTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showMovieDetails(newValue));
-
-
-
-
     }
 
-    public void ColumnFill() {
 
-       try{
+    public void ColumnFill() {
         MovieTitleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         GenreColumn.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
         DurationColumn.setCellValueFactory(cellData -> cellData.getValue().durationProperty());
         PublishedDateColumn.setCellValueFactory(cellData -> cellData.getValue().releaseDateProperty());
-        MovieTable.setItems(movieList);
-        } catch (Exception e) {
-            e.printStackTrace();
-       }
-
-        Movies movie = new Movies(0, null, null, null, null, null);
-        System.out.println(movie.getDuration());
-        System.out.println(movie.getReleaseDate());
-        System.out.println(movie.getTitle());
-        System.out.println(movie.getGenre());
-
-
     }
 
 
     private void loadMoviesFromDatabase() {
-        int id = 0;
         movieList.clear();
         try (Connection conn = DBUtils.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM movies");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                Movies movie = new Movies(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("genre"),
+                        rs.getString("release_date").trim(),
+                        rs.getString("duration").trim(),
+                        rs.getString("image"));
 
-                Movies movie = new Movies(id, null, null, null, null, null);
-                String publishDate = (PublishDate.getValue() == null) ? "" : PublishDate.getValue().toString();
-                movie.setTitle(rs.getString("title"));
-                movie.setGenre(rs.getString("genre"));
-                movie.setDuration(rs.getString("duration"));
-                movie.setReleaseDate(rs.getString("release_date"));
-                movie.setImagePath(rs.getString("image"));
-
+                System.out.println("Duration: " + rs.getString("duration")); // Check if this prints correctly
+                System.out.println("Release Date: " + rs.getString("release_date")); // Check if this prints correctly
 
                 movieList.add(movie);
-
-
             }
-            stmt.execute();
             MovieTable.setItems(movieList);
 
+            MovieTable.refresh();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-
     private void showMovieDetails(Movies movie) {
-        String title = movie != null ? movie.getTitle() : "";
-        String genre = movie != null ? movie.getGenre() : "";
-        String duration = movie != null ? movie.getDuration() : "";
-        LocalDate releaseDate = movie != null ? LocalDate.parse(movie.getReleaseDate()) : null;
-        String image = movie != null ? movie.getImagePath() : null;
+        String title = movie.getTitle();
+        String genre = movie.getGenre();
+        String duration = movie.getDuration();
+        LocalDate releaseDate = LocalDate.parse(movie.getReleaseDate());
+        String image = movie.getImagePath();
 
-        setMovieDetails(title, genre, duration, releaseDate, image, movie);
+        setMovieDetails(title, genre, duration, releaseDate, image);
         System.out.println("Image path: " + movie.getImagePath());
         System.out.println(movie.getDuration());
         System.out.println(movie.getReleaseDate());
@@ -172,10 +148,12 @@ public class AddMovieController {
 
 
         ImageView.setImage(new Image(movie.getImagePath()));
-
+        MovieTable.setItems(movieList);
+        MovieTable.refresh();
 
     }
-    private void setMovieDetails(String title, String genre, String duration, LocalDate releaseDate, String image, Movies movie) {
+    private void setMovieDetails(String title, String genre, String duration, LocalDate releaseDate, String image) {
+        Movies movie = new Movies(0, title, genre, releaseDate.toString(), duration, image);
         lbl_title.setText(title);
         lbl_genre.setText(genre);
         lbl_Duration.setText(duration);
@@ -186,14 +164,17 @@ public class AddMovieController {
         movie.setTitle(title);
         movie.setGenre(genre);
 
-        String imagePath = image != null ? movie.getImagePath() : null;
+
 
         if (image != null) {
             File file = new File(image);
             Image img = new Image(file.toURI().toString());
             ImageView.setImage(img);
+            MovieTable.setItems(movieList);
+            MovieTable.refresh();
         } else {
-            ImageView.setImage(null);
+            MovieTable.setItems(movieList);
+            MovieTable.refresh();
         }
     }
 
@@ -330,7 +311,7 @@ public class AddMovieController {
             return;
         }
 
-        Movies movie = new Movies(0, title, genre, releaseDate.toString(), duration, null);
+        Movies movie = new Movies(0, title, genre, releaseDate.toString(), duration, ImageView.getImage().getUrl());
         movie.setImagePath(ImageView.getImage().getUrl());
 
         try (Connection conn = DBUtils.getConnection()) {
