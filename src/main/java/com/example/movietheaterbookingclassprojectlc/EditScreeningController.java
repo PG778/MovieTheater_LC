@@ -128,6 +128,7 @@ public class EditScreeningController {
 
 
 
+
     private void showMovieDetails(Movies movie) {
         if(movie != null) {
             String title = movie.getTitle();
