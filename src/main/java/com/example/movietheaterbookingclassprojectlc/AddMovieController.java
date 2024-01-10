@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -85,7 +84,7 @@ public class AddMovieController {
     @FXML
     private TextField lbl_title;
 
-    private ObservableList<Movies> movieList;
+    public static ObservableList<Movies> movieList;
 
     @FXML
     public void initialize()  {

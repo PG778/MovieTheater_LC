@@ -3,6 +3,8 @@ package com.example.movietheaterbookingclassprojectlc;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 
+import java.time.LocalDate;
+
 public class Movies{
     private int id;
     private final SimpleStringProperty title;
@@ -18,6 +20,13 @@ public class Movies{
         this.releaseDate = new SimpleStringProperty(releaseDate);
         this.duration = new SimpleStringProperty(duration);
         this.imagePath = imagePath;
+    }
+
+    public Movies(String title, String genre, int duration, LocalDate releaseDate) {
+        this.title = new SimpleStringProperty(title);
+        this.genre = new SimpleStringProperty(genre);
+        this.releaseDate = new SimpleStringProperty(releaseDate.toString());
+        this.duration = new SimpleStringProperty(String.valueOf(duration));
     }
 
     // Getters

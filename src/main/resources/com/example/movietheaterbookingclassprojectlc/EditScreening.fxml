@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="402.0" prefWidth="967.0" styleClass="Secondary-Background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movietheaterbookingclassprojectlc.EditScreeningController">
+<AnchorPane prefHeight="402.0" prefWidth="967.0" styleClass="Secondary-Background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movietheaterbookingclassprojectlc.EditScreeningController">
    <children>
       <AnchorPane prefHeight="402.0" prefWidth="193.0" styleClass="root" stylesheets="@style.css">
          <children>
@@ -37,18 +36,19 @@
                   <Label layoutX="14.0" layoutY="14.0" text="Movie Title:" />
                   <Label layoutX="39.0" layoutY="51.0" text="Genre:" />
                   <Label layoutX="42.0" layoutY="93.0" text="Date:" />
-                  <TextField layoutX="76.0" layoutY="10.0" prefHeight="26.0" prefWidth="142.0" />
-                  <TextField layoutX="76.0" layoutY="47.0" prefHeight="26.0" prefWidth="142.0" />
-                  <TextField layoutX="76.0" layoutY="89.0" prefHeight="26.0" prefWidth="142.0" />
+                  <TextField fx:id="MovieTitleTF" layoutX="76.0" layoutY="10.0" prefHeight="26.0" prefWidth="142.0" />
+                  <TextField fx:id="GenreTF" layoutX="76.0" layoutY="47.0" prefHeight="26.0" prefWidth="142.0" />
+                  <TextField fx:id="DateTF" layoutX="76.0" layoutY="89.0" prefHeight="26.0" prefWidth="142.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="4.0" prefHeight="158.0" prefWidth="528.0">
+                  <TableView fx:id="ScreeningTable" layoutX="4.0" prefHeight="158.0" prefWidth="528.0">
                     <columns>
-                      <TableColumn prefWidth="150.40002727508545" text="Movie Title" />
-                      <TableColumn minWidth="0.0" prefWidth="160.7999725341797" text="Genre" />
-                        <TableColumn prefWidth="207.9998779296875" text="Showing Date" />
+                      <TableColumn fx:id="MovieTitleCol" prefWidth="113.6000394821167" text="Movie Title" />
+                      <TableColumn fx:id="GenreCol" minWidth="0.0" prefWidth="118.39996337890625" text="Genre" />
+                        <TableColumn fx:id="DurationCol" prefWidth="115.99998474121094" text="Duration" />
+                        <TableColumn fx:id="ScreeningCol" prefWidth="247.199951171875" text="Screening" />
                     </columns>
                   </TableView>
                </children>
@@ -59,9 +59,9 @@
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="223.0">
                <children>
-                  <ImageView fitHeight="112.0" fitWidth="142.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label layoutX="96.0" layoutY="135.0" text="Label" />
-                  <Label layoutX="96.0" layoutY="153.0" text="Title" />
+                  <ImageView fx:id="imageView" fitHeight="112.0" fitWidth="142.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="MovieTitleLabel" layoutX="96.0" layoutY="135.0" text="Label" />
+                  <Label fx:id="MovieDurationLBL" layoutX="96.0" layoutY="153.0" text="Title" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
