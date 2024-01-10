@@ -35,7 +35,13 @@ public class AvailableMoviesController {
 
     @FXML
     public void initialize()  {
-
+        AddMovieButton.setOnAction(actionEvent -> handleAddMovieButtonAction());
+        CustomersButton.setOnAction(actionEvent -> handleCustomersButtonAction());
+        DashBoardButton.setOnAction(actionEvent -> handleDashBoardButtonAction());
+        EditScreeningButton.setOnAction(actionEvent -> handleEditScreeningButtonAction());
+        SignOutButton.setOnAction(actionEvent -> handleSignOutButtonAction());
+        availableMoviesButton.setOnAction(actionEvent -> handleAvailableMoviesButtonAction());
+        
 
     }
 
