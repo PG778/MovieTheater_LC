@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="402.0" prefWidth="967.0" styleClass="Secondary-Background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movietheaterbookingclassprojectlc.EditScreeningController">
+<AnchorPane prefHeight="402.0" prefWidth="1019.0" styleClass="Secondary-Background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movietheaterbookingclassprojectlc.EditScreeningController">
    <children>
       <AnchorPane prefHeight="402.0" prefWidth="193.0" styleClass="root" stylesheets="@style.css">
          <children>
@@ -30,7 +30,7 @@
             <Button fx:id="SignOutButton" layoutY="376.0" mnemonicParsing="false" text="Sign Out" />
          </children>
       </AnchorPane>
-      <SplitPane dividerPositions="0.2936842105263157" layoutX="200.0" layoutY="7.0" prefHeight="160.0" prefWidth="761.0" stylesheets="@style.css">
+      <SplitPane dividerPositions="0.2936842105263157" layoutX="200.0" layoutY="7.0" prefHeight="160.0" prefWidth="797.0" stylesheets="@style.css">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="223.0">
                <children>
@@ -43,9 +43,9 @@
                   <ComboBox fx:id="isScreeningChoice" layoutX="42.0" layoutY="120.0" prefWidth="150.0" promptText="Is Screening?" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="534.0">
                <children>
-                  <TableView fx:id="ScreeningTable" layoutX="4.0" prefHeight="158.0" prefWidth="528.0">
+                  <TableView fx:id="ScreeningTable" layoutX="4.0" prefHeight="158.0" prefWidth="549.0">
                     <columns>
                       <TableColumn fx:id="MovieTitleCol" prefWidth="113.6000394821167" text="Movie Title" />
                       <TableColumn fx:id="GenreCol" minWidth="0.0" prefWidth="118.39996337890625" text="Genre" />
@@ -57,7 +57,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <SplitPane dividerPositions="0.2936842105263157" layoutX="200.0" layoutY="188.0" prefHeight="209.0" prefWidth="762.0">
+      <SplitPane dividerPositions="0.2936842105263157" layoutX="200.0" layoutY="188.0" prefHeight="210.0" prefWidth="798.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="223.0">
                <children>
@@ -66,7 +66,7 @@
                   <Label fx:id="MovieDurationLBL" layoutX="96.0" layoutY="153.0" text="Title" />
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="562.0">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Purchase Ticket" />
                   <Label layoutX="126.0" layoutY="56.0" text="Quantity" />
