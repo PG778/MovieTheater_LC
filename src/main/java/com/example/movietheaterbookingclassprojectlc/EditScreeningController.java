@@ -77,10 +77,6 @@ public class EditScreeningController {
     @FXML
     private ComboBox<String> isScreeningChoice;
 
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/movie_tickets";
-    static final String USER = "root";
-    static final String PASS = "password";
 
 
     public ObservableList<Movies> movieList = FXCollections.observableArrayList();
@@ -129,36 +125,7 @@ public class EditScreeningController {
     }
 
 
-//    private void populateTable() {
-//        Connection conn = null;
-//        Statement stmt = null;
-//        try {
-//            Class.forName(JDBC_DRIVER);
-//            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-//            stmt = conn.createStatement();
-//
-//            ObservableList<Movies> movies = FXCollections.observableArrayList();
-//
-//            String sql = "SELECT title, genre, duration, release_date FROM movies";
-//            ResultSet rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                String title  = rs.getString("title");
-//
-//                String genre = rs.getString("genre");
-//
-//                int duration = rs.getInt("duration");
-//
-//                LocalDate releaseDate = rs.getDate("release_date").toLocalDate();
-//
-//
-//                movies.add(new Movies(title, genre, duration, releaseDate));
-//            }
-//            ScreeningTable.setItems(movies);
-//            rs.close();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+
 
 
     private void showMovieDetails(Movies movie) {
