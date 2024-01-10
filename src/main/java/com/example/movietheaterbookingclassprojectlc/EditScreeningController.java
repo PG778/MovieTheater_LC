@@ -74,6 +74,8 @@ public class EditScreeningController {
 
     @FXML
     private Label MovieDurationLBL;
+    @FXML
+    private ComboBox<String> isScreeningChoice;
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/movie_tickets";
@@ -82,6 +84,7 @@ public class EditScreeningController {
 
 
     public ObservableList<Movies> movieList = FXCollections.observableArrayList();
+    public ObservableList<String> options = FXCollections.observableArrayList("Yes", "No");
 
 
     @FXML
@@ -100,7 +103,7 @@ public class EditScreeningController {
         ScreeningCol.setCellValueFactory(new PropertyValueFactory<>("releaseDate"));
 
         //populateTable();
-        loadMoviesFromDatabase();
+
 
 
         showMovieDetails(ScreeningTable.getSelectionModel().getSelectedItem());
@@ -114,6 +117,15 @@ public class EditScreeningController {
         ScreeningTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue!=null) showMovieDetails(newValue);
         });
+
+
+        if (isScreeningChoice != null) {
+            isScreeningChoice.setItems(options);
+        } else {
+            System.out.println("BOZO BAD AT CODING FIX THIS NOW");
+        }
+
+        loadMoviesFromDatabase();
     }
 
 
@@ -211,6 +223,8 @@ public class EditScreeningController {
         DateTF.setText(String.valueOf(releaseDate));
 
 
+
+
         movie.setDuration(duration);
         movie.setReleaseDate(releaseDate.toString());
         movie.setTitle(title);
@@ -227,6 +241,20 @@ public class EditScreeningController {
         } else {
             ScreeningTable.setItems(movieList);
             ScreeningTable.refresh();
+        }
+
+        if(isScreeningChoice != null) {
+            isScreeningChoice.setItems(options);
+
+
+            if (isScreeningChoice.getValue().equals("Yes")) {
+                ScreeningCol.setText("Yes");
+            } else {
+                ScreeningCol.setText("No");
+            }
+        }
+        else{
+            ScreeningCol.setText("No");
         }
     }
 
