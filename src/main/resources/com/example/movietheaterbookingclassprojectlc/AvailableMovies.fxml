@@ -44,8 +44,7 @@
               <columns>
                 <TableColumn fx:id="MovieTitleColumn" prefWidth="151.20001220703125" text="Movie Title" />
                 <TableColumn fx:id="GenreColumn" prefWidth="77.60003662109375" text="Genre" />
-                  <TableColumn fx:id="PublishedDateColumn" prefWidth="95.199951171875" text="Duration" />
-                  <TableColumn prefWidth="240.0" text="Published Date" />
+                  <TableColumn fx:id="PublishedDateColumn" prefWidth="240.0" text="Published Date" />
               </columns>
             </TableView>
          </children>

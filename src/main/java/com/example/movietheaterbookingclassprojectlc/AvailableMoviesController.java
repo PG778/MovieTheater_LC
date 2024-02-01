@@ -104,6 +104,10 @@ public class AvailableMoviesController {
                 Movies movie = new Movies(title, genre, duration);
                 movieTable.getItems().add(movie);
                 MovieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+                GenreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+                PublishedDateColumn.setCellValueFactory(new PropertyValueFactory<>("releaseDate"));
+
+
                 System.out.println("Title: " + title + ", Genre: " + genre + ", Duration: " + duration);
             }
         } catch (Exception e) {
