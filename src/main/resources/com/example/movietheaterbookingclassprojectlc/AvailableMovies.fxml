@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="402.0" prefWidth="1091.0" styleClass="Secondary-Background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movietheaterbookingclassprojectlc.AvailableMoviesController">
+<AnchorPane prefHeight="402.0" prefWidth="1091.0" styleClass="Secondary-Background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movietheaterbookingclassprojectlc.AvailableMoviesController">
    <children>
       <AnchorPane prefHeight="402.0" prefWidth="200.0" styleClass="root" stylesheets="@style.css">
          <children>
@@ -41,11 +40,11 @@
       <AnchorPane layoutX="508.0" layoutY="4.0" prefHeight="390.0" prefWidth="573.0" styleClass="Third-Background">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <TableView layoutX="5.0" layoutY="64.0" prefHeight="323.0" prefWidth="564.0">
+            <TableView fx:id="movieTable" layoutX="5.0" layoutY="64.0" prefHeight="323.0" prefWidth="564.0">
               <columns>
-                <TableColumn prefWidth="151.20001220703125" text="Movie Title" />
-                <TableColumn prefWidth="77.60003662109375" text="Genre" />
-                  <TableColumn prefWidth="95.199951171875" text="Duration" />
+                <TableColumn fx:id="MovieTitleColumn" prefWidth="151.20001220703125" text="Movie Title" />
+                <TableColumn fx:id="GenreColumn" prefWidth="77.60003662109375" text="Genre" />
+                  <TableColumn fx:id="PublishedDateColumn" prefWidth="95.199951171875" text="Duration" />
                   <TableColumn prefWidth="240.0" text="Published Date" />
               </columns>
             </TableView>
