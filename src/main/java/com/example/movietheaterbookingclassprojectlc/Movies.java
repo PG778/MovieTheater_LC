@@ -29,6 +29,20 @@ public class Movies{
         this.duration = new SimpleStringProperty(String.valueOf(duration));
     }
 
+    public Movies(String title, String genre, int year) {
+        this.title = new SimpleStringProperty(title);
+        this.genre = new SimpleStringProperty(genre);
+        this.releaseDate = new SimpleStringProperty(String.valueOf(year));
+        this.duration = new SimpleStringProperty("");
+    }
+
+    public Movies() {
+        this.title = new SimpleStringProperty("");
+        this.genre = new SimpleStringProperty("");
+        this.releaseDate = new SimpleStringProperty("");
+        this.duration = new SimpleStringProperty("");
+    }
+
     // Getters
     public int getId(){
         return id;
