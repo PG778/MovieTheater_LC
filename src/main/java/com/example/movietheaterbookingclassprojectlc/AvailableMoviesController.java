@@ -1,5 +1,6 @@
 package com.example.movietheaterbookingclassprojectlc;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,14 +8,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import static com.example.movietheaterbookingclassprojectlc.DBUtils.changeScene;
@@ -53,8 +55,16 @@ public class AvailableMoviesController {
 
     @FXML
     private TableColumn<Movies, String> PublishedDateColumn;
+    @FXML
+    ImageView imageView;
 
-    public static ObservableList<Movies> movieList;
+    @FXML
+    private Label TitleLabel;
+
+    @FXML
+
+
+    public static ObservableList<Movies> movieList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize()  {
@@ -65,11 +75,21 @@ public class AvailableMoviesController {
         EditScreeningButton.setOnAction(actionEvent -> handleEditScreeningButtonAction());
         SignOutButton.setOnAction(actionEvent -> handleSignOutButtonAction());
         availableMoviesButton.setOnAction(actionEvent -> handleAvailableMoviesButtonAction());
-        showMovieDetails(movieTable.getSelectionModel().getSelectedItem());
+        //showMovieDetails(movieTable.getSelectionModel().getSelectedItem());
         movieTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showMovieDetails(newValue));
         Movies movie = movieTable.getSelectionModel().getSelectedItem();
 
 
+        MovieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        GenreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        PublishedDateColumn.setCellValueFactory(new PropertyValueFactory<>("releaseDate"));
+        showMovieDetails(movieTable.getSelectionModel().getSelectedItem());
+        movieTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showMovieDetails(newValue));
+
+
+        if (movie != null) {
+            showMovieDetails(movie);
+        }
 
         movieTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) showMovieDetails(newValue);
@@ -78,44 +98,50 @@ public class AvailableMoviesController {
 
 
 
-        loadMoviesIntoTable();
 
-
-
-
-     //   showMovieDetails(movieTable.getSelectionModel().getSelectedItem());
+        loadMoviesFromDatabase();
 
     }
 
 
 
-    public void loadMoviesIntoTable() {
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/movie_tickets", "root", "password");
-            Statement stmt = con.createStatement();
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Movies");
+    private void loadMoviesFromDatabase() {
 
+        try (Connection conn = DBUtils.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM movies");
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String title = rs.getString("title");
-                String genre = rs.getString("genre");
-                int duration = rs.getInt("duration");
+                Movies movie = new Movies(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("genre"),
+                        rs.getString("release_date"),
+                        rs.getString("duration"),
+                        rs.getString("image"));
 
-                Movies movie = new Movies(title, genre, duration);
-                movieTable.getItems().add(movie);
-                MovieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-                GenreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
-                PublishedDateColumn.setCellValueFactory(new PropertyValueFactory<>("releaseDate"));
+                System.out.println("Duration: " + rs.getString("duration")); // Check if this prints correctly
+                System.out.println("Release Date: " + rs.getString("release_date")); // Check if this prints correctly
 
-
-                System.out.println("Title: " + title + ", Genre: " + genre + ", Duration: " + duration);
+                movieList.add(movie);
             }
-        } catch (Exception e) {
-            System.out.println(e);
+            movieTable.setItems(movieList);
+
+            movieTable.refresh();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
 
+
+    public void setMovieList(ObservableList<Movies> movieList) {
+        this.movieList = movieList;
+    }
+
+    public void setMovieTable(TableView<Movies> movieTable) {
+        this.movieTable = movieTable;
+    }
 
 
 
@@ -139,32 +165,7 @@ public class AvailableMoviesController {
         }
 
 
-    private void loadMoviesFromDatabase() {
-        String TitleName;
-        try (Connection conn = DBUtils.getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM movies");
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Movies movie = new Movies(
-                        rs.getInt("id"),
-                        rs.getString("title"),
-                        rs.getString("genre"),
-                        rs.getString("release_date"),
-                        rs.getString("duration"),
-                        rs.getString("image"));
 
-                System.out.println("Duration: " + rs.getString("duration")); // Check if this prints correctly
-                System.out.println("Release Date: " + rs.getString("release_date")); // Check if this prints correctly
-
-
-            }
-            movieTable.setItems(movieList);
-
-            movieTable.refresh();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void setMovieDetails(String title, String genre, String duration, LocalDate releaseDate, String image) {
         System.out.println("Title: " + title);
@@ -172,6 +173,7 @@ public class AvailableMoviesController {
         System.out.println("Duration: " + duration);
         System.out.println("Release Date: " + releaseDate);
         System.out.println("Image: " + image);
+
     }
 
 
@@ -190,6 +192,7 @@ public class AvailableMoviesController {
 
             String image = movie.getImagePath();
 
+
             setMovieDetails(title, genre, duration, releaseDate, image);
             System.out.println("Image path: " + movie.getImagePath());
             System.out.println(movie.getDuration());
@@ -197,9 +200,13 @@ public class AvailableMoviesController {
             System.out.printf("Title: %s, Genre: %s, Duration: %s, Release Date: %s, Image: %s\n", title, genre, duration, releaseDate, image);
 
             MovieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-
+            GenreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+            PublishedDateColumn.setCellValueFactory(new PropertyValueFactory<>("releaseDate"));
 
             movieTable.setItems(movieList);
+
+            TitleLabel.setText(title);
+            imageView.setImage(new Image(image));
             movieTable.refresh();
         } else {
             System.out.println("Movie is null");

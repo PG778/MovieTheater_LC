@@ -29,10 +29,10 @@
       </AnchorPane>
       <AnchorPane layoutX="210.0" layoutY="4.0" prefHeight="390.0" prefWidth="240.0" styleClass="Third-Background">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="Third-Background" />
-            <Label layoutX="106.0" layoutY="178.0" text="Title" />
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="Third-Background" />
+            <Label fx:id="TitleLabel" layoutX="106.0" layoutY="178.0" text="Title" />
             <Label layoutX="34.0" layoutY="237.0" text="Current:" />
-            <ComboBox layoutX="84.0" layoutY="233.0" prefWidth="150.0" />
+            <ComboBox fx:id="selectedMovieList" layoutX="84.0" layoutY="233.0" prefWidth="150.0" />
             <Button layoutX="34.0" layoutY="312.0" mnemonicParsing="false" text="Update" />
             <Button layoutX="143.0" layoutY="312.0" mnemonicParsing="false" text="Delete" />
          </children>
